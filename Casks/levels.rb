@@ -1,24 +1,25 @@
 # Template for Casks/levels.rb in the OWNER/homebrew-tap repo.
-# scripts/publish.sh fills in rafaelisdev, 1.4.1 and 188750fee8cc04e498f847307adfe04f4c615a737a333a842ce771ff90ce5197.
+# scripts/publish.sh fills in rafaelisdev, 2.0.1 and 0ad414c0d404ee2998da788296ba62fe908fb7a07390ffe4eaec9e321a8dfcbf.
 #   brew install rafaelisdev/tap/levels
 cask "levels" do
-  version "1.4.1"
-  sha256 "188750fee8cc04e498f847307adfe04f4c615a737a333a842ce771ff90ce5197"
+  version "2.0.1"
+  sha256 "0ad414c0d404ee2998da788296ba62fe908fb7a07390ffe4eaec9e321a8dfcbf"
 
   url "https://github.com/rafaelisdev/levels/releases/download/v#{version}/Levels.zip"
   name "Levels"
   desc "Per-app volume control in the menu bar"
-  homepage "https://github.com/rafaelisdev/levels"
+  homepage "https://getlevels.app"
 
-  # Levels updates itself since 1.4.1 (signed update.json in every release). Add
-  # `auto_updates true` here from the next release on: until then `brew upgrade` must
-  # still reach installs of 1.4, which can't update themselves.
+  # Levels updates itself since 1.4.1 (signed update.json in every release), so
+  # `brew upgrade` leaves it alone. Installs of 1.4 update once with `brew upgrade --greedy`.
+  auto_updates true
 
   depends_on macos: :big_sur
 
   app "Levels.app"
 
-  # The app is not notarized; without this macOS refuses to open it on first launch.
+  # Needed while releases aren't notarized: without it macOS refuses to open the app
+  # on first launch. Drop it once releases are signed with Developer ID.
   postflight_steps do
     run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Levels.app"]
   end
