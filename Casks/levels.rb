@@ -1,9 +1,9 @@
 # Template for Casks/levels.rb in the OWNER/homebrew-tap repo.
-# scripts/publish.sh fills in rafaelisdev, 2.0.1 and 0ad414c0d404ee2998da788296ba62fe908fb7a07390ffe4eaec9e321a8dfcbf.
+# scripts/publish.sh fills in rafaelisdev, 2.0.2 and 95a1a54493dea36d4ec0b787f599314fa17f9185e49820875edff241879a119e.
 #   brew install rafaelisdev/tap/levels
 cask "levels" do
-  version "2.0.1"
-  sha256 "0ad414c0d404ee2998da788296ba62fe908fb7a07390ffe4eaec9e321a8dfcbf"
+  version "2.0.2"
+  sha256 "95a1a54493dea36d4ec0b787f599314fa17f9185e49820875edff241879a119e"
 
   url "https://github.com/rafaelisdev/levels/releases/download/v#{version}/Levels.zip"
   name "Levels"
